@@ -9,7 +9,7 @@ export default ({
 }) => {
   const [activeSection, setActiveSection] = useState(activeSectionDefault);
 
-  const handle = throttle(throttleMs, () => {
+  const handle = throttle(() => {
     let currentSectionId = activeSection;
     for (let i = 0; i < sectionElementRefs.length; i++) {
       const section = sectionElementRefs[i].current;
@@ -25,7 +25,7 @@ export default ({
     }
 
     setActiveSection(currentSectionId);
-  });
+  }, throttleMs);
 
   useEffect(() => {
     window.addEventListener('scroll', handle, { passive: true });
