@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import throttle from 'lodash/fp/throttle';
+import throttle from 'lodash.throttle';
 
 export default ({
   activeSectionDefault = 0,
@@ -28,7 +28,7 @@ export default ({
   });
 
   useEffect(() => {
-    window.addEventListener('scroll', handle);
+    window.addEventListener('scroll', handle, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handle);
